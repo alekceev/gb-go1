@@ -6,12 +6,12 @@ type User struct {
 	Name string
 }
 
-func (u *User) String() string {
+func (u User) String() string {
 	return u.Name
 }
 
 func main() {
-	u := &User{
+	u := User{
 		Name: "World",
 	}
 
