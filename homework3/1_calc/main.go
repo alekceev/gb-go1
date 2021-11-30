@@ -17,13 +17,15 @@ func main() {
 	fmt.Print("Введите первое число: ")
 	fmt.Scanln(&a)
 
-	fmt.Print("Введите второе число: ")
-	fmt.Scanln(&b)
-
 	ops := []string{"+", "-", "*", "/", "**", "!"}
 
 	fmt.Print("Введите арифметическую операцию " + strings.Join(ops, ", ") + ": ")
 	fmt.Scanln(&op)
+
+	if op != "!" {
+		fmt.Print("Введите второе число: ")
+		fmt.Scanln(&b)
+	}
 
 	switch op {
 	case "+":

@@ -20,11 +20,17 @@ func main() {
 }
 
 func init_prime_arr(n int) []int {
-	arr := []int{1}
+	arr := []int{}
 	// для исключения чисел в степени
 	exclude := map[int]struct{}{}
 	for i := 2; i <= n; i++ {
 		s := 1
+
+		// числа в степени не попадают в результирующий массив
+		if _, ok := exclude[i]; ok {
+			continue
+		}
+
 		// заполняем числа в степени меньше n
 		for {
 			s++
@@ -35,18 +41,9 @@ func init_prime_arr(n int) []int {
 			exclude[j] = struct{}{}
 		}
 
-		// числа в степени не попадают в результирующий массив
-		if _, ok := exclude[i]; ok {
-			continue
-		}
-
 		ok := true
 		// исключаем числа, которые делятся без остатка на уже добавленные числа
 		for _, j := range arr {
-
-			if j == 1 {
-				continue
-			}
 
 			if i%j == 0 {
 				ok = false
@@ -58,5 +55,8 @@ func init_prime_arr(n int) []int {
 			arr = append(arr, i)
 		}
 	}
+
+	arr = append([]int{1}, arr...)
+
 	return arr
 }
