@@ -19,7 +19,7 @@ func main() {
 func fibo(cache map[string]int) {
 	if cache["i"] < cache["n"] {
 		cache["i"]++
-		fibo(cache)
 		cache["first"], cache["second"] = cache["second"], cache["first"]+cache["second"]
+		fibo(cache)
 	}
 }
