@@ -11,15 +11,15 @@ func main() {
 	fmt.Print("Введите число: ")
 	fmt.Scanln(&n)
 
-	cache := map[string]int{"first": 0, "second": 1, "n": 1}
-	fibo(n, cache)
+	cache := map[string]int{"first": 0, "second": 1, "n": n, "i": 1}
+	fibo(cache)
 	fmt.Printf("%d число ряда фибоначи = %d\n", n, cache["second"])
 }
 
-func fibo(n int, cache map[string]int) {
-	if cache["n"] < n {
-		cache["n"]++
-		fibo(n, cache)
+func fibo(cache map[string]int) {
+	if cache["i"] < cache["n"] {
+		cache["i"]++
+		fibo(cache)
 		cache["first"], cache["second"] = cache["second"], cache["first"]+cache["second"]
 	}
 }
