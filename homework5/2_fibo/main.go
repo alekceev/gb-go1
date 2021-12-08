@@ -18,7 +18,7 @@ func main() {
 		return fibo["first"]
 	}
 
-	for i := 0; i <= n; i++ {
+	for i := 0; i < n; i++ {
 		fmt.Println(f())
 	}
 }

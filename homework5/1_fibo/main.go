@@ -10,17 +10,17 @@ func main() {
 	fmt.Print("Введите число: ")
 	fmt.Scanln(&n)
 
-	fibo := func() func() int {
-		first, second := 0, 1
-		return func() int {
-			defer func() { first, second = second, first+second }()
-			return first
-		}
-	}
+	arr := fibo([]int{}, n)
+	fmt.Println(arr)
+}
 
-	f := fibo()
-
-	for i := 0; i <= n; i++ {
-		fmt.Println(f())
+func fibo(arr []int, n int) []int {
+	if len(arr) == 0 {
+		arr = append(arr, 0, 1)
 	}
+	arr = append(arr, arr[len(arr)-2]+arr[len(arr)-1])
+	if len(arr) < n {
+		arr = fibo(arr, n)
+	}
+	return arr
 }
