@@ -59,6 +59,7 @@ func getConfigFromYaml(path string) (Config, error) {
 	if err != nil {
 		return Config{}, err
 	}
+	defer file.Close()
 	err = yaml.NewDecoder(file).Decode(&config)
 	if err != nil {
 		return Config{}, err
